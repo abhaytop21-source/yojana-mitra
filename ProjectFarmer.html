@@ -737,7 +737,7 @@
         },
         eligibility:{
           en:['SHG graded as per NRLM norms','Active bank account & books of accounts'],
-          mr:['NRLM निकषांनुसार ग्रेडेड SHG','बँक खाते व पुस्तके व्यवस्थित']
+          mr:['NRLM निकषानुसार ग्रेडेड SHG','बँक खाते व पुस्तके व्यवस्थित']
         },
         docs:{
           en:['SHG resolution','Bank details','Member list & IDs'],
@@ -826,42 +826,515 @@
         apply:'https://umed.in/'
       },
       {
-        id:'state_tractor_subsidy',
-        title:{en:'State Subsidy – Tractor / Power Tiller (MahaDBT)', mr:'राज्य अनुदान – ट्रॅक्टर / पॉवर टिलर (महाडिबीटी)'},
-        dept:'Dept. of Agriculture, Maharashtra',
-        level:'state',
-        districts:['All'],
-        categories:['machinery'],
-        crops:[],
-        what:{
-          en:'State assistance for tractor/power tiller purchase for eligible farmers (share/ceiling as notified).',
-          mr:'पात्र शेतकऱ्यांसाठी ट्रॅक्टर/पॉवर टिलर खरेदीवर राज्य सहाय्य (सूचनेनुसार हिस्सा/सीलिंग).'
+        id: 'state_tractor_subsidy',
+        title: { en: 'State Subsidy – Tractor / Power Tiller (MahaDBT)', mr: 'राज्य अनुदान – ट्रॅक्टर / पॉवर टिलर (महाडिबीटी)' },
+        dept: 'Dept. of Agriculture, Maharashtra',
+        level: 'state',
+        districts: ['All'],
+        categories: ['machinery'],
+        crops: [],
+        what: {
+          en: 'State assistance for tractor/power tiller purchase for eligible farmers (share/ceiling as notified).',
+          mr: 'पात्र शेतकऱ्यांसाठी ट्रॅक्टर/पॉवर टिलर खरेदीवर राज्य सहाय्य (सूचनेनुसार हिस्सा/सीलिंग).'
         },
-        eligibility:{
-          en:['Registered farmer in Maharashtra','As per landholding & category norms','Purchase from empanelled vendor'],
-          mr:['महाराष्ट्रातील नोंदणीकृत शेतकरी','जमीनधारणा/श्रेणी निकषानुसार','एम्पॅनेल्ड विक्रेत्याकडून खरेदी']
+        eligibility: {
+          en: ['Registered farmer in Maharashtra', 'As per landholding & category norms', 'Purchase from empanelled vendor'],
+          mr: ['महाराष्ट्रातील नोंदणीकृत शेतकरी', 'जमीनधारणा/श्रेणी निकषानुसार', 'एम्पॅनेल्ड विक्रेत्याकडून खरेदी']
         },
-        docs:{
-          en:['Aadhaar','7/12 extract','Bank details','Quotation/Invoice from empanelled dealer'],
-          mr:['आधार','७/१२ उतारा','बँक तपशील','एम्पॅनेल्ड डिलरचे कोटेशन/इनव्हॉईस']
+        docs: {
+          en: ['Aadhaar', '7/12 extract', 'Bank details', 'Quotation/Invoice from empanelled dealer'],
+          mr: ['आधार', '७/१२ उतारा', 'बँक तपशील', 'एम्पॅनेल्ड डिलरचे कोटेशन/इनव्हॉईस']
         },
-        steps:{
-          en:[
+        steps: {
+          en: [
             'Select tractor/tiller & get vendor quotation.',
             'Apply on MahaDBT with documents; await verification & sanction.',
             'Purchase & upload bills; receive subsidy as per rules.'
           ],
-          mr:[
+          mr: [
             'ट्रॅक्टर/टिलर निवडा व विक्रेत्याकडून कोटेशन घ्या.',
             'महाडिबीटीवर कागदपत्रांसह अर्ज करा; पडताळणी व मंजुरीची प्रतीक्षा.',
             'खरेदी करून बिले अपलोड करा; नियमांनुसार अनुदान मिळवा.'
           ]
         },
-        apply:'https://mahadbt.maharashtra.gov.in'
+        apply: 'https://mahadbt.maharashtra.gov.in'
+      },
+      {
+        id: 'new_local_scheme',
+        title: { en: 'Local Irrigation Support', mr: 'स्थानिक सिंचन सहाय्य' },
+        dept: 'State Agriculture',
+        level: 'state',
+        districts: ['Aurangabad (Chhatrapati Sambhajinagar)'], // or ['All']
+        categories: ['irrigation'],
+        crops: ['Cotton','Horticulture'],
+        what: { en: 'Subsidy for small irrigation systems.', mr: 'लहान सिंचन प्रणालींसाठी अनुदान.' },
+        eligibility: { en: ['Farmer with cultivable land'], mr: ['कृषी जमीन असणे आवश्यक'] },
+        docs: { en: ['Aadhaar','7/12','Bank passbook'], mr: ['आधार','७/१२','बँक पासबुक'] },
+        steps: { en: ['Get vendor estimate','Apply at block office'], mr: ['विक्रेत्याकडून अंदाज घ्या','ब्लॉक कार्यालयात अर्ज करा'] },
+        apply: '#'
       }
     ];
     // Merge new schemes
     SCHEMES.push(...MORE_SCHEMES);
+
+    // === Add 10 more schemes (Machinery + Storage/FPO) ===
+    SCHEMES.push(
+      // 1) Rotavator / Cultivator Subsidy
+      {
+        id:'rotavator_cultivator_subsidy',
+        title:{en:'Rotavator / Cultivator Subsidy', mr:'रोटावेटर / कल्टिव्हेटर अनुदान'},
+        dept:'Dept. of Agriculture, Maharashtra (SMAM/State)',
+        level:'state',
+        districts:['All'],
+        categories:['machinery'],
+        crops:[],
+        what:{
+          en:'Subsidy for purchasing rotavator/cultivator to reduce tillage cost and improve soil mixing.',
+          mr:'tillage खर्च कमी करण्यासाठी व माती मिश्रण सुधारण्यासाठी रोटावेटर/कल्टिव्हेटर खरेदीस अनुदान.'
+        },
+        eligibility:{
+          en:[
+            'Registered farmer in Maharashtra',
+            'Priority: Small & marginal farmers (< 2 ha)',
+            'Purchase from empanelled vendor OR any GST dealer (invoice required)'
+          ],
+          mr:[
+            'महाराष्ट्रातील नोंदणीकृत शेतकरी',
+            'प्राथमिकता: लघु व सीमांत शेतकरी (< 2 हेक्टर)',
+            'एम्पॅनेल्ड विक्रेता किंवा कोणताही GST डिलर (इनव्हॉईस आवश्यक)'
+          ]
+        },
+        docs:{
+          en:['Aadhaar','7/12 extract','Bank details','Vendor quotation/proforma','GST Invoice after purchase'],
+          mr:['आधार','७/१२ उतारा','বँक तपशील','विक्रेता कोटेशन/प्रोफॉर्मा','खरेदीनंतर GST इनव्हॉईस']
+        },
+        steps:{
+          en:[
+            'Get quotation from an empanelled vendor; alternatively get GST dealer quotation with full specs.',
+            'Apply on State DBT/Agri-Machinery portal with documents.',
+            'Field verification → sanction. Purchase within allowed time.',
+            'Upload invoice & photos; subsidy released to bank as per norms.'
+          ],
+          mr:[
+            'एम्पॅनेल्ड विक्रेत्याकडून कोटेशन घ्या; पर्यायाने GST डिलरचे पूर्ण स्पेक्स असलेले कोटेशन घ्या.',
+            'राज्य DBT/अ‍ॅग्री-मशीनरी पोर्टलवर कागदपत्रांसह अर्ज करा.',
+            'मैदानी पडताळणी → मंजुरी. दिलेल्या वेळेत खरेदी करा.',
+            'इनव्हॉईस व फोटो अपलोड करा; निकषानुसार बँकेत अनुदान जमा.'
+          ]
+        },
+        apply:'https://agrimachinery.nic.in',
+        tags:{land:['<2','2-5']}
+      },
+
+      // 2) Seed Drill / Zero Till Drill Subsidy
+      {
+        id:'seed_drill_zero_till_subsidy',
+        title:{en:'Seed Drill / Zero Till Seed Drill Subsidy', mr:'सीड ड्रिल / झिरो टिल सीड ड्रिल अनुदान'},
+        dept:'DoAC&FW (SMAM) / State Agriculture',
+        level:'central',
+        districts:['All'],
+        categories:['machinery'],
+        crops:['Wheat','Rice','Cotton','Soybean'],
+        what:{
+          en:'Assistance for seed drills/zero-till drills to save moisture and reduce fuel & time.',
+          mr:'आर्द्रता जपण्यासाठी व इंधन/वेळ बचतीसाठी सीड ड्रिल/झिरो-टिल ड्रिल खरेदीस सहाय्य.'
+        },
+        eligibility:{
+          en:[
+            'Farmer or FPO/SHG/CHC',
+            'Priority for <2 ha landholders and conservation agriculture adopters',
+            'Vendor: empanelled preferred; other GST dealer allowed with due verification'
+          ],
+          mr:[
+            'शेतकरी किंवा FPO/SHG/CHC',
+            '२ हेक्टरपेक्षा कमी धारक व संरक्षण शेती स्वीकारणाऱ्यांना प्राधान्य',
+            'विक्रेता: एम्पॅनेल्ड प्राधान्य; इतर GST डिलर परंतु पडताळणी आवश्यक'
+          ]
+        },
+        docs:{
+          en:['Aadhaar','7/12','Bank details','Quotation','CHC/FPO resolution (if applicable)'],
+          mr:['आधार','७/१२','बँक तपशील','कोटेशन','CHC/FPO ठराव (लागू असल्यास)']
+        },
+        steps:{
+          en:[
+            'Collect quotations and choose model.',
+            'Apply on agri-machinery/State DBT portal before purchase.',
+            'Post-sanction purchase; upload invoice and installation photo.',
+            'Receive DBT subsidy as per category ceilings.'
+          ],
+          mr:[
+            'कोटेशन्स गोळा करून मॉडेल निवडा.',
+            'खरेदीपूर्वी अ‍ॅग्री-मशीनरी/राज्य DBT पोर्टलवर अर्ज करा.',
+            'मंजुरीनंतर खरेदी; इनव्हॉईस व बसवणीचा फोटो अपलोड करा.',
+            'श्रेणी मर्यादेनुसार DBT अनुदान प्राप्त करा.'
+          ]
+        },
+        apply:'https://agrimachinery.nic.in',
+        tags:{land:['<2','2-5']}
+      },
+
+      // 3) Mulcher / Shredder Subsidy (Crop Residue)
+      {
+        id:'mulcher_shredder_subsidy',
+        title:{en:'Mulcher / Shredder Subsidy (Crop Residue)', mr:'मल्चर / श्रेडर अनुदान (पीक अवशेष)'},
+        dept:'State Agriculture / SMAM',
+        level:'state',
+        districts:['All'],
+        categories:['machinery'],
+        crops:['Cotton','Soybean','Sugarcane','Wheat','Rice'],
+        what:{
+          en:'Support to buy mulcher/shredder to manage residues, reduce burning and improve soil.',
+          mr:'पीक अवशेष व्यवस्थापनासाठी मल्चर/श्रेडर खरेदीस सहाय्य—जाळपोळ कमी व मृदा सुधारणा.'
+        },
+        eligibility:{
+          en:[
+            'Registered farmer; priority to <2 ha and notified residue zones',
+            'Buy from empanelled vendor or any GST dealer with verification'
+          ],
+          mr:[
+            'नोंदणीकृत शेतकरी; <2 हेक्टर आणि सूचित अवशेष क्षेत्रांना प्राधान्य',
+            'एम्पॅनेल्ड विक्रेता किंवा कोणताही GST डिलर (पडताळणी)'
+          ]
+        },
+        docs:{
+          en:['Aadhaar','7/12','Bank details','Quotation/Invoice','Geo-tagged photo (post-installation)'],
+          mr:['आधार','७/१२','बँक तपशील','कोटेशन/इनव्हॉईस','जिओ-टॅग फोटो (बसवणीनंतर)']
+        },
+        steps:{
+          en:[
+            'Apply on State DBT portal with quotation.',
+            'Department verification and sanction.',
+            'Purchase within validity; upload bill & photos.',
+            'Subsidy released to bank account.'
+          ],
+          mr:[
+            'राज्य DBT पोर्टलवर कोटेशनसह अर्ज करा.',
+            'विभागीय पडताळणी व मंजुरी.',
+            'वैधतेत खरेदी; बिल व फोटो अपलोड करा.',
+            'अनुदान बँक खात्यात वितरीत.'
+          ]
+        },
+        apply:'https://mahadbt.maharashtra.gov.in',
+        tags:{land:['<2','2-5']}
+      },
+
+      // 4) Solar Agriculture Sprayer Subsidy
+      {
+        id:'solar_sprayer_subsidy',
+        title:{en:'Solar Agriculture Sprayer Subsidy', mr:'सोलर कृषी स्प्रेयर अनुदान'},
+        dept:'State Agriculture (Renewables convergence)',
+        level:'state',
+        districts:['All'],
+        categories:['machinery'],
+        crops:['Horticulture','Cotton','Soybean','Paddy'],
+        what:{
+          en:'Assistance to purchase solar-powered sprayers to reduce diesel cost and ensure uniform spraying.',
+          mr:'डिझेल खर्च कमी व समसमान फवारणीसाठी सौरऊर्जेवर चालणाऱ्या स्प्रेयर खरेदीस सहाय्य.'
+        },
+        eligibility:{
+          en:[
+            'Individual farmer or FPO/SHG/CHC',
+            'Priority: <2 ha, women farmers',
+            'Empanelled vendor preferred; other GST dealer allowed with battery/warranty compliance'
+          ],
+          mr:[
+            'वैयक्तिक शेतकरी किंवा FPO/SHG/CHC',
+            'प्राधान्य: <2 हेक्टर, महिला शेतकरी',
+            'एम्पॅनेल्ड विक्रेता प्राधान्य; इतर GST डिलर परंतु बॅटरी/वारंटी निकष आवश्यक'
+          ]
+        },
+        docs:{
+          en:['Aadhaar','7/12','Bank details','Quotation','Warranty/Spec sheet'],
+          mr:['आधार','७/१२','बँक तपशील','कोटेशन','वारंटी/स्पेक शीट']
+        },
+        steps:{
+          en:[
+            'Shortlist model and collect quotation.',
+            'Apply on State DBT portal; await verification and sanction.',
+            'Purchase and upload invoice & demonstration photo/video.',
+            'DBT subsidy as per approved share.'
+          ],
+          mr:[
+            'मॉडेल ठरवून कोटेशन घ्या.',
+            'राज्य DBT पोर्टलवर अर्ज; पडताळणी व मंजुरीची प्रतीक्षा.',
+            'खरेदी करून इनव्हॉईस व डेमो फोटो/व्हिडिओ अपलोड करा.',
+            'मंजूर भागानुसार DBT अनुदान.'
+          ]
+        },
+        apply:'https://mahadbt.maharashtra.gov.in',
+        tags:{land:['<2','2-5']}
+      },
+
+      // 5) Drone CHC Usage Support (Service)
+      {
+        id:'drone_chc_usage_support',
+        title:{en:'Drone Spray – CHC Usage Support', mr:'ड्रोन फवारणी – CHC वापर सहाय्य'},
+        dept:'DoAC&FW / State Agriculture',
+        level:'central',
+        districts:['All'],
+        categories:['machinery'],
+        crops:['Cotton','Soybean','Paddy','Wheat','Horticulture'],
+        what:{
+          en:'Assistance for farmers to use CHC/agency drones for spraying and monitoring at subsidized service rates.',
+          mr:'फवारणी व मॉनिटरिंगसाठी CHC/एजन्सीचे ड्रोन वापरण्यासाठी सवलतीच्या दरात सेवा सहाय्य.'
+        },
+        eligibility:{
+          en:[
+            'Any farmer booking drone service through CHC/authorized agency',
+            'Priority: small & marginal; notified blocks first'
+          ],
+          mr:[
+            'CHC/अधिकृत एजन्सीद्वारे ड्रोन सेवा बुक करणारा कोणताही शेतकरी',
+            'प्राथमिकता: लघु/सीमांत; सूचित ब्लॉक्स प्रथम'
+          ]
+        },
+        docs:{
+          en:['Aadhaar','7/12 or sowing proof','Service booking receipt','Bank details'],
+          mr:['आधार','७/१२ किंवा पेरणी पुरावा','सेवा बुकिंग पावती','बँक तपशील']
+        },
+        steps:{
+          en:[
+            'Contact nearest CHC/authorized drone service.',
+            'Book acreage; ensure recommended dose & safety.',
+            'Service completion slip + geo-tag proof.',
+            'Claim assistance as per portal instructions.'
+          ],
+          mr:[
+            'जवळच्या CHC/अधिकृत ड्रोन सेवेशी संपर्क.',
+            'एकर बुकिंग; शिफारसीत डोस व सेफ्टी पाळा.',
+            'सेवा पूर्णता पावती + जिओ-टॅग पुरावा.',
+            'पोर्टल सूचनांनुसार सहाय्य मागणी.'
+          ]
+        },
+        apply:'https://agrimachinery.nic.in',
+        tags:{land:['<2','2-5']}
+      },
+
+      // 6) Power Weeder / Brush Cutter Subsidy
+      {
+        id:'power_weeder_brush_cutter_subsidy',
+        title:{en:'Power Weeder / Brush Cutter Subsidy', mr:'पॉवर वीडर / ब्रश कटर अनुदान'},
+        dept:'State Agriculture / SMAM',
+        level:'state',
+        districts:['All'],
+        categories:['machinery'],
+        crops:['Horticulture','Sugarcane','Cotton','Tur'],
+        what:{
+          en:'Support for power weeders/brush cutters to reduce labour cost in interculture and orchard management.',
+          mr:'मधली खुरपणी व फळबाग व्यवस्थापनात मजुरी खर्च कमी करण्यासाठी पॉवर वीडर/ब्रश कटर खरेदीस सहाय्य.'
+        },
+        eligibility:{
+          en:[
+            'Individual farmer; priority to <2 ha and hilly/tribal areas',
+            'Empanelled vendor or any GST dealer with safety accessories included'
+          ],
+          mr:[
+            'वैयक्तिक शेतकरी; <2 हेक्टर व डोंगराळ/आदिवासी भागांना प्राधान्य',
+            'एम्पॅनेल्ड विक्रेता किंवा कोणताही GST डिलर (सेफ्टी अॅक्सेसरीजसह)'
+          ]
+        },
+        docs:{
+          en:['Aadhaar','7/12','Bank details','Quotation/Invoice','Photo after use'],
+          mr:['आधार','७/१२','बँक तपशील','कोटेशन/इनव्हॉईस','वापरानंतर फोटो']
+        },
+        steps:{
+          en:[
+            'Apply on state portal with quotation.',
+            'Verification and sanction as per category.',
+            'Purchase and upload bills/photos.',
+            'Receive DBT subsidy.'
+          ],
+          mr:[
+            'राज्य पोर्टलवर कोटेशनसह अर्ज करा.',
+            'श्रेणीनुसार पडताळणी व मंजुरी.',
+            'खरेदी करून बिले/फोटो अपलोड करा.',
+            'DBT अनुदान मिळवा.'
+          ]
+        },
+        apply:'https://mahadbt.maharashtra.gov.in',
+        tags:{land:['<2','2-5']}
+      },
+
+      // 7) Pack House (MIDH/NHB)
+      {
+        id:'pack_house_midh_nhb',
+        title:{en:'Pack House Assistance (MIDH/NHB)', mr:'पॅक हाऊस सहाय्य (MIDH/NHB)'},
+        dept:'MIDH/NHB with State Horticulture',
+        level:'central',
+        districts:['All'],
+        categories:['storage','processing'],
+        crops:['Horticulture'],
+        what:{
+          en:'Assistance for on-farm pack house with basic grading, sorting and pre-cooling provisions.',
+          mr:'शेतीपातळीवरील पॅक हाऊस – ग्रेडिंग, सॉर्टिंग व प्री-कूलिंग सुविधांसाठी सहाय्य.'
+        },
+        eligibility:{
+          en:[
+            'Farmer/FPO/SHG/Co-op with horticulture produce',
+            'Technical design as per norms; small units prioritized'
+          ],
+          mr:[
+            'फळभाजी उत्पादक शेतकरी/FPO/SHG/संस्था',
+            'निकषानुसार तांत्रिक आराखडा; लहान युनिटना प्राधान्य'
+          ]
+        },
+        docs:{
+          en:['KYC','Land/lease papers','Layout & estimate','Bank consent/sanction'],
+          mr:['KYC','जमीन/लीज कागदपत्रे','आराखडा व अंदाज','बँक संमती/मंजुरी']
+        },
+        steps:{
+          en:[
+            'Prepare layout & estimates; choose site.',
+            'Apply on NHB/MIDH/state portal through horticulture office.',
+            'Technical verification → sanction.',
+            'Construct and submit bills/photos; subsidy released.'
+          ],
+          mr:[
+            'आराखडा व अंदाज तयार करा; जागा ठरवा.',
+            'हॉर्टिकल्चर कार्यालयामार्फत NHB/MIDH/राज्य पोर्टलवर अर्ज करा.',
+            'तांत्रिक पडताळणी → मंजुरी.',
+            'बांधकाम पूर्ण करून बिले/फोटो सादर; अनुदान वितरित.'
+          ]
+        },
+        apply:'https://nhb.gov.in',
+        tags:{land:['<2','2-5','>5']}
+      },
+
+      // 8) Cold Storage / CA Storage (AIF Linked)
+      {
+        id:'cold_storage_aif',
+        title:{en:'Cold Storage / CA Storage Assistance (AIF Linked)', mr:'कोल्ड स्टोरेज / CA स्टोरेज सहाय्य (AIF लिंक)'},
+        dept:'MoA&FW (AIF) / State Horticulture',
+        level:'central',
+        districts:['All'],
+        categories:['storage','processing','loan'],
+        crops:['Horticulture','Potato','Onion'],
+        what:{
+          en:'Credit-linked support with interest subvention & guarantee for establishing cold/CA storage.',
+          mr:'कोल्ड/CA स्टोरेज उभारणीसाठी व्याज सवलत व हमीसह कर्ज-आधारित सहाय्य.'
+        },
+        eligibility:{
+          en:[
+            'Farmer/FPO/Entrepreneur with viable DPR',
+            'Land/lease & power feasibility; bankable proposal'
+          ],
+          mr:[
+            'व्यवहार्य DPR असलेला शेतकरी/FPO/उद्योजक',
+            'जमीन/लीज व वीज उपलब्धता; बँकेला मान्य प्रस्ताव'
+          ]
+        },
+        docs:{
+          en:['KYC','DPR','Land/lease','Power NOC','Bank appraisal/sanction'],
+          mr:['KYC','DPR','जमीन/लीज','वीज NOC','बँक मूल्यांकन/मंजुरी']
+        },
+        steps:{
+          en:[
+            'Prepare DPR and get bank consent.',
+            'Apply on AIF portal; parallel apply at state horticulture if required.',
+            'Post-sanction construction & commissioning.',
+            'Claim subsidy/benefit as per guidelines.'
+          ],
+          mr:[
+            'DPR तयार करून बँकेची संमती घ्या.',
+            'AIF पोर्टलवर अर्ज; आवश्यक असल्यास राज्य हॉर्टिकल्चरकडेही अर्ज.',
+            'मंजुरीनंतर बांधकाम व चालू करणे.',
+            'मार्गदर्शक सूचनांनुसार लाभ/अनुदान मिळवा.'
+          ]
+        },
+        apply:'https://www.agriinfra.dac.gov.in',
+        tags:{land:['<2','2-5','>5']}
+      },
+
+      // 9) Primary Processing Unit (Sorting/Grading/De-husking)
+      {
+        id:'primary_processing_unit',
+        title:{en:'Primary Processing Unit Subsidy', mr:'प्राथमिक प्रक्रिया युनिट अनुदान'},
+        dept:'State Agriculture/Horticulture; PMFME convergence',
+        level:'state',
+        districts:['All'],
+        categories:['processing','storage'],
+        crops:['Horticulture','Millets','Pulses'],
+        what:{
+          en:'Support for small primary processing units (sorting, grading, de-husking, mini-mill) at village level.',
+          mr:'गावपातळीवरील लघु प्राथमिक प्रक्रिया युनिट (सॉर्टिंग, ग्रेडिंग, डिहस्किंग, मिनी-मिल) साठी सहाय्य.'
+        },
+        eligibility:{
+          en:[
+            'Individual farmer/SHG/FPO',
+            'Priority to <2 ha & women/SC/ST applicants'
+          ],
+          mr:[
+            'वैयक्तिक शेतकरी/SHG/FPO',
+            '२ हेक्टरपेक्षा कमी व महिला/SC/ST अर्जदारांना प्राधान्य'
+          ]
+        },
+        docs:{
+          en:['KYC','Udyam (if available)','Estimate/Quotation','Bank consent (if credit-linked)'],
+          mr:['KYC','Udyam (असल्यास)','अंदाज/कोटेशन','क्रेडिट-लिंक असल्यास बँक संमती']
+        },
+        steps:{
+          en:[
+            'Prepare estimate and site readiness.',
+            'Apply on State DBT/PMFME portal.',
+            'Verification → sanction; purchase/installation.',
+            'Submit bills/photos; receive assistance.'
+          ],
+          mr:[
+            'अंदाज तयार करून साइट सज्ज ठेवा.',
+            'राज्य DBT/PMFME पोर्टलवर अर्ज करा.',
+            'पडताळणी → मंजुरी; खरेदी/बसवणी.',
+            'बिले/फोटो सादर; सहाय्य मिळवा.'
+          ]
+        },
+        apply:'https://pmfme.mofpi.gov.in',
+        tags:{land:['<2','2-5']}
+      },
+
+      // 10) FPO Formation & Equity Grant (SFAC)
+      {
+        id:'sfac_fpo_equity_grant',
+        title:{en:'FPO Formation & Equity Grant (SFAC)', mr:'FPO स्थापन व इक्विटी ग्रँट (SFAC)'},
+        dept:'SFAC (GoI) / State Agriculture',
+        level:'central',
+        districts:['All'],
+        categories:['fpo','storage','processing','loan'],
+        crops:[],
+        what:{
+          en:'Support for forming FPOs and equity grant/credit guarantee for collective input, processing and marketing.',
+          mr:'FPO स्थापन तसेच सामूहिक इनपुट, प्रक्रिया व विपणनासाठी इक्विटी ग्रँट/क्रेडिट हमी सहाय्य.'
+        },
+        eligibility:{
+          en:[
+            'Producer group/FIGs promoted into FPO',
+            'Compliant with Companies Act and SFAC norms'
+          ],
+          mr:[
+            'उत्पादक गट/FIG पासून FPO मध्ये रूपांतर',
+            'कंपनी कायदा व SFAC निकषांचे पालन'
+          ]
+        },
+        docs:{
+          en:['Promoter group details','Bye-laws/MOA','PAN/TAN','Bank account','Board resolution'],
+          mr:['प्रवर्तक गट तपशील','घटक नियम/MOA','PAN/TAN','बँक खाते','बोर्ड ठराव']
+        },
+        steps:{
+          en:[
+            'Mobilize farmers and register FPO.',
+            'Apply to SFAC for equity grant/credit guarantee.',
+            'Open bank account; finalize business plan.',
+            'Utilize funds for collective activities; comply with reporting.'
+          ],
+          mr:[
+            'शेतकऱ्यांचे संघटन करून FPO नोंदणी करा.',
+            'इक्विटी ग्रँट/क्रेडिट हमीसाठी SFAC कडे अर्ज करा.',
+            'बँक खाते उघडा; व्यवसाय योजना अंतिम करा.',
+            'सामूहिक क्रियांकरिता निधी वापरा; रिपोर्टिंगचे पालन करा.'
+          ]
+        },
+        apply:'https://sfacindia.com',
+        tags:{land:['<2','2-5','>5']}
+      }
+    );
 
     // ---------- Finder ----------
     let lastResults = [];
